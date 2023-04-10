@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0px;
+            padding: 0px;
+        }
+        .wrapper{
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            background-color:rgb(95, 133, 173);
+            padding: 40px;
+            margin: auto;
+        }
+        .title{
+            text-align: center;
+            font-weight: bolder;
+            color: brown;
+            margin-bottom: 10px;
+            font-size: x-large;
+        }
+        label{
+            font-size: smaller;
+            font-weight: bolder;
+            color:bisque;
+            margin-bottom: 5px;
+        }
+        #task-name{
+            margin-bottom: 10px;
+        }
+        #task-description{
+            margin-bottom: 10px;
+        }
+        .buttonrow{
+            display: flex;
+            flex-direction: row;
+            justify-content: end;
+        }
+        .btn{
+            padding: 3px 20px 3px 20px;
+            border: 0px;
+            background-color: rgba(130, 125, 125, 0.156);
+            color: brown;
+            box-shadow: 3px 3px 3px rgb(171, 88, 88);
+            border-radius: 10px;
+        }
+        .btn:hover{
+            background-color: rgb(79, 57, 57);
+        }
+        .btn-disabled{
+            background-color: rgb(201, 175, 175);
+            color:rgb(153, 46, 46);
+            box-shadow: 3px 3px 3px rgb(143, 92, 92);
+        }
+        .btn-disabled:hover{
+            background-color:rgb(204, 141, 99);
+        }
+        .row{
+            display: grid;
+            grid-template-columns: 30% 40% 15% 15%;
+            color:bisque;
+            font-weight: bolder;
+        }
+        .fontcolor{
+            color:bisque;
+        }
+        .colorform{
+            color:bisque;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <span class="title">THÁI AN</span>
+        <label for="">Tên Task:</label>
+        <input type="text" name="task-name" id="task-name" placeholder="Nhập tên vào đây">
+        <label for="" class="description">Miêu tả:</label>
+        <textarea name="task-description" id="task-description" cols="30" rows="10"
+            placeholder="Nhập mô tả"></textarea>
+        <div class="buttonrow">
+            <button id="btnAdd" class="btn btn-disabled" disabled="true">Thêm</button>
+        </div>
+        <h5 class="colorform">Danh sách Tasks:</h5>
+        <section id="task-list">
+            <div class="row">
+                <div class="name">Tên</div>
+                <div class="des">Miêu Tả</div>
+                <div class="del">Xóa</div>
+                <div class="edit">Chỉnh sửa</div>
+            </div>
+        </section>
+    <script>
+       let list = document.getElementById("task-list");
+        let btnAdd = document.getElementById("btnAdd");
+
+        let inputName = document.getElementById("task-name");
+        inputName.addEventListener("keyup", () => {
+            if (inputName.value.length < 5) {
+                btnAdd.disabled = true;
+                btnAdd.classList.add("btn-disabled");
+            } else {
+                btnAdd.classList.remove("btn-disabled");
+                btnAdd.disabled = false;
+            }
+        });
+
+        btnAdd.addEventListener("click", () => {
+            addRow();
+        });
+
+        function addRow() {
+            let task_name = document.getElementById("task-name").value;
+            let task_des = document.getElementById("task-description").value;
+            let disabledInput = true;
+
+            if (task_name.length < 5 || task_des.length < 20) {
+                alert("Độ dài tên phải lớn hơn hoặc bằng 5 ký tự và Mô tả phải lớn hơn hoặc bằng 20 ký tự");
+            } else {
+                let row = document.createElement("div");
+                row.classList.add("row");
+
+                let name = document.createElement("input");
+                name.type = "text";
+                name.value = task_name;
+                name.disabled = disabledInput;
+
+                let description = document.createElement("input");
+                description.value = task_des;
+                description.disabled = disabledInput;
+
+                let btnDel = document.createElement("button");
+                btnDel.innerHTML = "del";
+
+                let btnEdit = document.createElement("button");
+                btnEdit.innerHTML = "edit";
+
+                row.appendChild(name);
+                row.appendChild(description);
+                row.appendChild(btnDel);
+                row.appendChild(btnEdit);
+                list.appendChild(row);
+
+                btnEdit.addEventListener("click", () => {
+
+                    if (description.value.length < 20 || name.value.length < 5) {
+                        alert("Không thể up lên được :)))");
+                    } else {
+                        disabledInput = !disabledInput;
+                        name.disabled = disabledInput;
+                        description.disabled = disabledInput;
+
+                        btnEdit.innerHTML = disabledInput ? "edit" : "update";
+                    }
+                });
+
+                btnDel.addEventListener("click", () => {
+                    list.removeChild(row);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

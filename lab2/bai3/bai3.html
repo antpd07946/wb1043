@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var hoTen = prompt("Nhập họ tên cần tách: ");
+        var Gioitinh = prompt("Nhập giới tính: ");
+        var hoTenhopLe = hoTen.trim();
+        var ho = null;
+        var tenDem = null;
+        var ten = null;
+        for(var i = 0; i < hoTenhopLe.length; i++){
+            if(hoTenhopLe[i] == " "){
+                ho = hoTenhopLe.slice(0,i);
+                hoTenhopLe = hoTenhopLe.slice(i).trim();
+                break;
+            }
+        }
+        var check = false;
+        for(var i = hoTenhopLe.length - 1; i >= 0; i--){
+            if(hoTenhopLe[i] == " "){
+                check = true;
+                ten = hoTenhopLe.slice(i).trim();
+                tenDem = hoTenhopLe.slice(0,1);
+                break;
+            }
+        }
+        if(check == false){
+            ten = hoTenhopLe;
+            console.log("Họ: "+ho);
+            console.log("Tên: "+ten);
+            console.log("Họ và tên: "+ho+" "+ten);
+        }
+        else{
+            console.log("Họ: "+ho);
+            console.log("Tên đệm: "+tenDem);
+            console.log("Tên: "+ten);
+            if(Gioitinh.toLowerCase() == "nam"){
+            tenDem = "Văn";
+            }
+            else if(Gioitinh.toLowerCase() == "nữ"){
+            tenDem = "Vẽ";
+            }
+            console.log("Họ và tên: "+ho+" "+tenDem+" "+ten);
+        }
+    </script>
+</body>
+</html>

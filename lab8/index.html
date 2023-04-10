@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music video</title>
+    <style>
+        video{
+            width: 100%;
+            max-width: 640px;
+        }
+        nav{
+            justify-content: center;
+            display:flex;
+            flex-wrap: wrap;
+            margin-bottom: 0;
+            position:absolute;
+            bottom: 50px;
+        }
+        button{
+            background-color: black;
+            color:rgb(137, 166, 220);
+            border: 2px solid black;
+            box-shadow: 3px 3px 3px rgb(102, 41, 41);
+            padding: 8px 10px 8px 10px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            flex-direction: column;
+
+            cursor: pointer;
+        }
+        button:hover{
+            background-color:rgb(151, 33, 58);
+        }
+        label{
+            background-color: rgb(204, 132, 43);
+            color:rgb(205, 206, 164);
+            border: 2px solid rgb(62, 56, 56);
+            box-shadow: 3px 3px 3px rgb(152, 60, 37);
+            padding: 8px 10px 8px 10px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            display:inline-block ;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        label:hover{
+            background-color:rgb(119, 77, 119);
+        }
+        .content{
+            background-color: rgb(76, 6, 20);
+        }
+        h1{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align:center;
+            text-decoration:none;
+            font-size:50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content" id="container">
+        <h1>Cataclysm</h1>
+        <video id="myplayer" width="1024" height="576">
+          <source src="./Yvetzal - Cataclysm (slowed & reverb).mp4" type="video/mp4">
+        </video>
+        <nav>
+          <button onclick="playVideo()">Play</button>
+          <button onclick="pauseVideo()">Pause</button>
+          <button onclick="replayVideo()">Replay</button>
+          <button onclick="increaseVolume()">Volume++</button>
+          <button onclick="decreaseVolume()">Volume--</button>
+          <label for="loop">reset:</label>
+          <input type="checkbox" id="loop" name="loop" onclick="muteVolume()">
+        </nav>
+    </div>
+    <script>
+        var player = document.getElementById("myplayer");
+        function playVideo(){
+            player.play();
+        }
+        function pauseVideo(){
+            player.pause(); 
+        }
+        function replayVideo(){
+            player.currentTime = 0;
+            player.pause();
+        }
+        function increaseVolume(){
+            if(player.volume < 1){
+                player.volume = parseFloat(player.volume + 0.1).toFixed(1);
+            }
+        }
+        function decreaseVolume(){
+            if(player.volume > 0){
+                player.volume = parseFloat(player.volume - 0.1).toFixed(1);
+            }
+        }
+        function muteVolume(){
+            player.loop = !player.loop;
+        }
+    </script> 
+</body>
+</html>
