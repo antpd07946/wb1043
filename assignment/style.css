@@ -6,6 +6,7 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     cursor: pointer;
 }
+
 #wrapper{
     /*kích thước màn hình là 1280 x 720*/
     width: 100%;
@@ -41,8 +42,8 @@
     text-decoration: none;
 }
 #banner{
-    background-image: url(./img/ảnh\ động\ banner.webp);
-    width: 1200px;
+    background-image: url(./img/banner.jpg);
+    width: 1200;
     height: 700px;
     margin-top: 40px;
     display: flex;
@@ -174,7 +175,7 @@ animation-delay: 1s;
 }
 #footer{
     width: 100%;
-    background:rgb(169, 139, 191);
+    background:rgb(166, 133, 190);
     height: 322px;
     margin-top: 338px;
     padding: 0px 63px;
@@ -184,7 +185,7 @@ animation-delay: 1s;
 }
 #footer .box{
     width:250px;
-    color:rgb(247, 232, 232);
+    color:rgb(210, 188, 188);
 }
 #footer .box .quick-nemu{
     margin-top: 40px;
@@ -193,7 +194,7 @@ animation-delay: 1s;
     margin-bottom: 12px;
 }
 #footer .box .quick-nemu ,.item a{
-    color:rgb(247, 232, 232);
+    color:rgb(211, 155, 155);
     text-decoration: none;
 }
 #footer .box form input{
@@ -201,7 +202,7 @@ animation-delay: 1s;
     height: 42px;
     background: transparent;
     padding-left: 20px;
-    color:rgb(247, 232, 232);
+    color:rgb(165, 69, 69);
     margin-top: 30px;
 }
 #footer .box form button{
@@ -210,7 +211,9 @@ animation-delay: 1s;
     width: 163px;
     height: 38px;
     margin-top: 29px;
-    color:white;
-
+    color:rgb(234, 113, 113);
 }
-
+p{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:rgb(255, 220, 220)
+}
