@@ -20,11 +20,11 @@
     justify-content: space-between;
     align-items: center;
 }
-#menu{
+ul#menu{
     list-style: none;
     display: flex;
 } 
-#menu .item{
+ul#menu .item{
     margin: 0px 25px;
 }
 ul#menu .item a{
@@ -34,19 +34,12 @@ ul#menu .item a{
     text-transform: uppercase;
     position:relative;
 }
-ul#menu .item a::after{
-    content: "";
-    width: 0px;
-    height: 5px;
-    background:#ca2a2f;
-    position:absolute;
-    bottom: 0px;
-    left: 0;
-    transition: all 0.5s ease-in-out;
-}
-#menu .item a:hover::after{
-    width:50%;
-    transform:translateX(100%);
+.line-effect{
+    width: 0;
+    height: 2px;
+    background-color: #9A208C;
+    position: fixed;
+    pointer-events: none;
 }
 #actions{
     display: flex;
